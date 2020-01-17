@@ -257,12 +257,12 @@ param (
 }
 
 # Idempotence - do not install Chocolatey if it is already installed
-#if (!(Test-Path $ChocoInstallPath)) {
+if (!(Test-Path $ChocoInstallPath)) {
   # download the package to the local path
- # if (!(Test-Path $localChocolateyPackageFilePath)) {
+  if (!(Test-Path $localChocolateyPackageFilePath)) {
     Download-Package $searchUrl $localChocolateyPackageFilePath
-  #}
+  }
 
   # Install Chocolatey
-  #Install-ChocolateyFromPackage $localChocolateyPackageFilePath
-#}
+  Install-ChocolateyFromPackage $localChocolateyPackageFilePath
+}
